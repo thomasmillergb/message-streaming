@@ -6,21 +6,33 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Optional;
 
-public class TransactionResult {
+public class TransactionResultRx {
 
     private final String errorMessage;
+    private final Exception exception;
 
-    public TransactionResult() {
+    public TransactionResultRx() {
         errorMessage = null;
+        exception = null;
     }
 
-    public TransactionResult(final String errorMessage) {
+    public TransactionResultRx(final String errorMessage) {
         this.errorMessage = errorMessage;
+        exception = null;
+    }
+    public TransactionResultRx(final Exception exception) {
+        this.errorMessage = exception.getMessage();
+        this.exception = exception;
     }
 
     public Optional<String> getErrorMessage() {
         return Optional.ofNullable(errorMessage);
     }
+
+    public Optional<Exception> getException(){
+        return Optional.ofNullable(exception);
+    }
+
 
     @Override
     public boolean equals(final Object o) {
