@@ -4,12 +4,19 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class JavaModel {
+import java.util.UUID;
 
-    private final String Hello;
+public class Transaction {
+    private UUID uuid;
+    private int amount;
 
-    public JavaModel(final String hello) {
-        Hello = hello;
+    public Transaction(final int amount) {
+        uuid = UUID.randomUUID();
+        this.amount = amount;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 
     @Override
@@ -22,10 +29,8 @@ public class JavaModel {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 
-
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
-
 }

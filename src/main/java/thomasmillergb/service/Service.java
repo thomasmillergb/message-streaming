@@ -1,15 +1,10 @@
 package thomasmillergb.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import thomasmillergb.client.Client;
+import thomasmillergb.model.Transaction;
 
-@Component
-public class Service {
-    private final Client client;
+import java.util.Optional;
+import java.util.concurrent.CompletionStage;
 
-    @Autowired
-    public Service(final Client client) {
-        this.client = client;
-    }
+public interface Service {
+    CompletionStage<Optional<String>> processTransaction(Transaction tx);
 }
